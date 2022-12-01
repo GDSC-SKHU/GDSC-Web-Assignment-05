@@ -1,3 +1,4 @@
+import React from 'react';
 import Embed from 'react-embed';
 import styled, { StyledComponent } from 'styled-components';
 import MovieComponent from './movie';
@@ -5,13 +6,13 @@ const StyledmovieTeaser = styled.div`
   width: 70%;
   margin-top: 5px;
   position: absolute;
-  background-color: #d1d1d1;
+  background-color: #037b94;
 `;
 
 export default function MovieTeaser(
   movieurl: string,
   modal: Boolean,
-  setmodal: Function
+  setmodal: React.MouseEventHandler<HTMLButtonElement>
 ) {
   return (
     <StyledmovieTeaser>

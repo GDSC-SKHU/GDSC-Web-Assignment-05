@@ -18,6 +18,8 @@ const StyledMovie = styled.section`
 const StyledmovieName = styled.p`
   width: 100%;
   font-size: 1.8%;
+  color: whitesmoke;
+  font-weight: 100;
 `;
 
 const StyledmovieImage = styled.img`
@@ -28,14 +30,21 @@ const StyledmovieImage = styled.img`
   border-radius: 6%;
   &:hover {
     cursor: pointer;
-    opacity: 0.7;
+    opacity: 0.5;
   }
 `;
 
 const StyledmovieButton = styled.button`
-  color: black;
-  background-color: #f1f1f1;
+  color: #fff;
+  background-color: #037b94;
   border: none;
+  font-size: 1.8%;
+  font-weight: 600;
+  &:hover {
+    cursor: pointer;
+    background-color: #037b95;
+  }
+  border-radius: 5%;
 `;
 
 export default function MovieComponent({
@@ -45,7 +54,8 @@ export default function MovieComponent({
   movieURL,
 }: Movie) {
   const [modal, setModal] = useState<Boolean>(false);
-  const showTeaser = () => {
+  const showTeaser = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     if (modal) {
       setModal(false);
     } else {
