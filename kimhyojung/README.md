@@ -42,5 +42,24 @@
 
 - Globalstyle에 폰트 적용하려고 하는데 안된다.
 
-* 결국 public에 폰트를 만들고 그안에 css를 넣는 방식으로 해결했지만, src안에서
-  어떻게 로컬 폰트를 가져오는지 아직 궁금하다,,,
+* 결국 public에 폰트를 만들고 그안에 css를 넣는 방식으로 해결했지만, src안에서어
+  떻게 로컬 폰트를 가져오는지 아직 궁금하다,,,
+
+#### 11-27 마주친 문제점
+
+- 리랜더링 시 styled-component가 적용되지 않는다
+
+#### 12-02 마주친 문제점
+
+- Link에 styled-component먹이는 방법..
+- (Link태그를 걍 styled-components로 바로 꾸미는 방법) or Link안에 태그를 넣고
+  그 태그를 꾸미는 방법
+
+```import Link from 'next/link'
+const StyledLink = styled(Link)`
+  color: red;
+  background: blue;
+`
+
+export default () => (<div><StyledLink href="mylink">MyText</StyledLink></div>)
+```
