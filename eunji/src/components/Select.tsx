@@ -3,7 +3,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 
 export default function Select () {
     const [number, setNumber] = useState<number>(1);
-    const [price, setPrice] = useState<number>(3);
+    const [price, setPrice] = useState<number>(600);
     const [result, setResult] = useState<number>(3);
 
     const router = useRouter();

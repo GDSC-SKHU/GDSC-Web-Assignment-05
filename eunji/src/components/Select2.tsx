@@ -4,10 +4,16 @@ import styled from "styled-components";
 
 export default function Select2() {
     const [number, setNumber] = useState<number>(1);
-    const [price, setPrice] = useState<number>(3);
+    const [price, setPrice] = useState<number>(600);
     const [result, setResult] = useState<number>(3);
-
-    const [tab, setTab] = useState<string>('curr');
+    const [name, setName] = useState<string>('');
+    
+    const onClickTest = () => {
+        if (onclick) {
+            `background-color: black;`
+        }
+    }
+// 만약 클릭하면 result 값이 반영되게
 
     const router = useRouter();
 
@@ -27,7 +33,10 @@ export default function Select2() {
             alert('좌석을 선택해 주세요.');
             return;
         }
-        router.push('/end');
+        else router.push({
+            pathname: '/purchase',
+            query: {person: number, price: result},
+        });
     };
 
     return (
@@ -38,25 +47,51 @@ export default function Select2() {
                 <option value={800}>범죄도시2(800원)</option>
             </select>
 
-            <button onClick={() => setNumber(prev => prev + 1)}>up</button>
-            <button onClick={() => setNumber(prev => prev - 1)}>down</button>
+            <UDBtn onClick={() => setNumber(prev => prev + 1)}>up</UDBtn>
+            <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
 
-            <h2>{number}명 {result}원</h2>
+            <h2>선택하신 {name} 인원수는 {number}명, 총 금액은 {result}원입니다.</h2>
 
-            <button onClick={onClickPurchase}>결제하기</button>
+            <PurchaseBtn onClick={onClickPurchase}>결제하기</PurchaseBtn>
 
-            <Btn onClick={() => setTab('curr')}>메뉴1</Btn>
-            <Btn onClick={() => setTab('prev')}>메뉴2</Btn>
+            <Btn onChange={onClickTest}>메뉴1</Btn>
+            <Btn onChange={onClickTest}>메뉴2</Btn>
         </div>
     )
 }
 
-const Btn = styled.div `
+const UDBtn = styled.button`
 background-color: #fff;
 border: 1px solid #dbdee2;
 color: #404a5c;
 cursor: pointer;
-&:active {
-    background-color: #505bf0;
-    color: #fff;
-}`;
+&:hover {
+    color: white;
+    background-color: black;
+}
+`;
+
+const Btn = styled.button `
+background-color: #fff;
+border: 1px solid #dbdee2;
+color: #404a5c;
+cursor: pointer;
+&:visited {background-color: black;}
+`;
+
+const PurchaseBtn = styled.button `
+background-color: black;
+color: white;
+font-size: 1rem;
+
+padding: 8px 15px;
+cursor: pointer;
+
+border: 1px solid black;
+border-radius: 1rem;
+&:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
+`;
