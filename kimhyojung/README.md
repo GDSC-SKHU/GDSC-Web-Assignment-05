@@ -52,8 +52,8 @@
 #### 12-02 마주친 문제점
 
 - Link에 styled-component먹이는 방법..
-- (Link태그를 걍 styled-components로 바로 꾸미는 방법) or Link안에 태그를 넣고
-  그 태그를 꾸미는 방법
+- (Link태그를 걍 styled-components로 바로 꾸미는 방법) or Link안에 태그를 넣고그
+  태그를 꾸미는 방법
 
 ```import Link from 'next/link'
 const StyledLink = styled(Link)`
@@ -63,3 +63,14 @@ const StyledLink = styled(Link)`
 
 export default () => (<div><StyledLink href="mylink">MyText</StyledLink></div>)
 ```
+
+- NAV에는 어떤 로직으로 이동하는 것이 아니라, LINK를, 이미지를 눌렀을 떄 구매 페
+  이지로 이동은 `특정 영화를 누르는 UI로직`이라고 생각해서 라우터를 사용함
+
+#### 좌석 선택의 문제
+
+- 좌석은 고유함. (영화관에서 똑같은 좌석은 없으므로,,)
+- 좌석을 여러개 만들고, 같은 좌석을 고르면 취소되게 하고 싶었음.
+- `innerHTML`이 좌석마다 다르다고 생각했기 떄문에, innerHTML을 원소로 갖는 문자
+  열 배열을 만들고, 배열 안에 좌석이 있으면 제거하고, 없으면 넣어줌
+- 더 좋은 방법이 있을 거 같음(innerHTML 사용하는 것보다..)
