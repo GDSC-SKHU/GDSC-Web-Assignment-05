@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
-import { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
+
+const seatArray: Array<string> = new Array<string>();
 
 export default function Select2() {
     const [number, setNumber] = useState<number>(1);
@@ -8,13 +10,8 @@ export default function Select2() {
     const [result, setResult] = useState<number>(3);
     const [name, setName] = useState<string>('Aladin');
 
-    const onClickTest = () => {
-        if (onclick) {
-            `background-color: black;`
-        }
-    }
-    // 만약 클릭하면 result 값이 반영되게
-
+    const [seatNum, setseatNum] = useState<number>(0);
+ 
     const router = useRouter();
 
     // 가격 바뀌게
@@ -24,7 +21,7 @@ export default function Select2() {
         // 타겟은 기본적으로 String
     };
 
-    const onSelectChange2 = (e: ChangeEvent<HTMLSelectElement>) => {
+    const onSelectChange2 = (e: { target: { value: any; }; }) => {
         const { value } = e.target;
         setName(e.target.value);
     };
@@ -52,6 +49,22 @@ export default function Select2() {
         });
     };
 
+    const SeatSelect = (e: React.MouseEvent<HTMLButtonElement>) => {
+        const seatNode = e.currentTarget;
+        const seatNumber = e.currentTarget.innerHTML;
+
+        if (seatArray.includes(seatNumber)) {
+            const seatIndex = seatArray.indexOf(seatNumber);
+            delete seatArray[seatIndex];
+            seatNode.style.backgroundColor = "#ad1712";
+            setNumber(prev => prev + 1);
+        } else {
+            setNumber(prev => prev - 1);
+            seatArray.push(seatNumber);
+            seatNode.style.backgroundColor = "#666";
+        }
+    }
+
     return (
         <Container>
             <StyledSelect2 value={price} onChange={onSelectChange}>
@@ -69,7 +82,7 @@ export default function Select2() {
             <ScreenDiv />
 
             <StyledDiv>
-                <UDBtn onClick={() => setNumber(prev => prev + 1)}>up</UDBtn>
+                <UDBtn onClick={SeatSelect}>up</UDBtn>
                 <Seat />
                 <UDBtn onClick={() => setNumber(prev => prev + 1)}>up</UDBtn>
                 <UDBtn onClick={() => setNumber(prev => prev + 1)}>up</UDBtn>
@@ -84,27 +97,10 @@ export default function Select2() {
                 <Seat />
                 <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
             </StyledDiv>
-            <StyledDiv>
-                <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
-                <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
-                <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
-                <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
-                <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
-                <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
-            </StyledDiv>
-            <StyledDiv>
-                <Seat />
-                <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
-                <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
-                <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
-                <UDBtn onClick={() => setNumber(prev => prev - 1)}>down</UDBtn>
-                <Seat />
-            </StyledDiv>
-
-            <div>
+            <Collect>
                 <Occupied />
                 <p>: 이미 선택된 좌석</p>
-            </div>
+            </Collect>
 
             <h2>선택하신 인원수는 {number}명, 총 금액은 {result}원입니다.</h2>
 
@@ -112,6 +108,10 @@ export default function Select2() {
         </Container>
     )
 }
+
+const Collect = styled.div`
+display: flex;
+`;
 
 const Occupied = styled.div`
 color: #fff;
@@ -171,13 +171,11 @@ text-align: center;
 transition: 0.2s;
 cursor: pointer;
 
-&:hover {
-    color: red;
-    transform: translateY(-5px);
-}
-`;
-
-const UDBtn = styled.button`
+// &:hover {
+//     color: red;
+//     transform: translateY(-5px);
+// }
+`;let UDBtn = styled.button`
 background-color: #fff;
 width: 40px;
 height: 40px;
