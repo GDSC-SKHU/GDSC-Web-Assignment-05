@@ -74,3 +74,22 @@ export default () => (<div><StyledLink href="mylink">MyText</StyledLink></div>)
 - `innerHTML`이 좌석마다 다르다고 생각했기 떄문에, innerHTML을 원소로 갖는 문자
   열 배열을 만들고, 배열 안에 좌석이 있으면 제거하고, 없으면 넣어줌
 - 더 좋은 방법이 있을 거 같음(innerHTML 사용하는 것보다..)
+
+#### Router.push에서 쿼리 숨기기
+
+- 쿼리스트링에 정보가 들어가는 것이 안이뻐서, URL에 쿼리의 정보를 숨기면서 쿼리
+  를 넘김
+
+```
+   Router.push(
+      {
+        pathname: '/booking',
+        query: { moviename: name, movieimg: imgSrc },
+      },
+      'booking'
+    );
+  };
+```
+
+- Router.push에 두번쨰 인자로, 실제 URL에 표시될 이름을 넣어주고, 쿼리를 전달하
+  면 `booking` URL에서 쿼리를 잘 받을 수 있음
