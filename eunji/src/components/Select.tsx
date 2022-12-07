@@ -92,7 +92,7 @@ export default function Select() {
 
     return (
         <Container>
-
+            <p>영화를 선택해 주세요.</p>
             <StyledSelect value={price} onChange={onSelectChange}>
                 <option value={600}>Aladin(600원)</option>
                 <option value={700}>Beauty and the Beast(700원)</option>
@@ -181,12 +181,15 @@ border: 1px solid black;
 const StyledSelect = styled.select`
 all: unset;
 
-margin-top: 2rem;
 padding: 5px 10px;
 
-border: 1px solid red;
+background-color: #ad1712;
+color: white;
+
+border: 1px solid black;
 border-radius: 20px;
 text-align: center;
+font-weight: bold;
 cursor: pointer;
 `;
 

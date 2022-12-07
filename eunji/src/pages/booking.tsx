@@ -3,13 +3,12 @@ import Select from "../components/Select";
 
 export default function Booking() {
     return(
-        <div>
-            <StyledP>아래에서 영화를 선택해 주세요.</StyledP>
+        <Container>
             <Select />
-        </div>
+        </Container>
     )
-}
+};
 
-const StyledP = styled.p `
-text-align: center;
+const Container = styled.div`
+padding: 1rem 0;
 `;
