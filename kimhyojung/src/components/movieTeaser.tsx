@@ -1,12 +1,11 @@
 import React from 'react';
 import Embed from 'react-embed';
-import styled, { StyledComponent } from 'styled-components';
-import MovieComponent from './movie';
+import styled from 'styled-components';
 const StyledmovieTeaser = styled.div`
   width: 70%;
   margin-top: 5px;
   position: absolute;
-  background-color: #037b94;
+  background-color: white;
 `;
 
 export default function MovieTeaser(
