@@ -5,7 +5,6 @@ import styled from "styled-components";
 // 좌석 선택을 위한 배열 생성
 const selectArray: Array<string> = new Array<string>();
 
-
 export default function Select2() {
     // 사람의 수
     const [person, setPerson] = useState<number>(0);
@@ -45,13 +44,13 @@ export default function Select2() {
 
         // 만약 changeSeat이 selectArray에 포함된다면
         if (selectArray.includes(changeSeat)) {
-            const seatIndex = selectArray.indexOf(changeSeat);
-            // seatIndex를 삭제하고(기본값)
-            delete selectArray[seatIndex];
+            const indexSeat = selectArray.indexOf(changeSeat);
+            // indexSeat를 삭제하고(기본값)
+            delete selectArray[indexSeat];
             // 배경색을 변경하고
             selectColor.style.backgroundColor = "#666";
-            // 값을 늘려라
-            () => setPerson(prev => prev + 1);
+            // 값을 줄여라
+            setPerson(person - 1);
         }
         // 그렇지 않으면
         else {
@@ -59,8 +58,8 @@ export default function Select2() {
             selectArray.push(changeSeat);
             // 배경색을 변경하고
             selectColor.style.backgroundColor = "#ad1712";
-            // 값을 줄여라
-            () => setPerson(prev => prev - 1)
+            // 값을 늘려라
+            setPerson(person + 1);
         }
     }
 
@@ -108,21 +107,46 @@ export default function Select2() {
             <ScreenDiv />
 
             <StyledDiv>
-                <UDBtn onClick={SelectChange} />
-                <Seat />
-                <UDBtn onClick={SelectChange} />
-                <UDBtn onClick={SelectChange} />
-                <UDBtn onClick={SelectChange} />
-                <UDBtn onClick={SelectChange} />
+                <UDBtn onClick={SelectChange}>1</UDBtn>
+                <Seat>2</Seat>
+                <UDBtn onClick={SelectChange}>3</UDBtn>
+                <UDBtn onClick={SelectChange}>4</UDBtn>
+                <UDBtn onClick={SelectChange}>5</UDBtn>
+                <UDBtn onClick={SelectChange}>6</UDBtn>
             </StyledDiv>
             <StyledDiv>
-                <UDBtn onClick={SelectChange} />
-                <UDBtn onClick={SelectChange} />
-                <UDBtn onClick={SelectChange} />
-                <Seat />
-                <Seat />
-                <UDBtn onClick={SelectChange} />
+                <UDBtn onClick={SelectChange}>7</UDBtn>
+                <UDBtn onClick={SelectChange}>8</UDBtn>
+                <Seat>9</Seat>
+                <Seat>10</Seat>
+                <UDBtn onClick={SelectChange}>11</UDBtn>
+                <UDBtn onClick={SelectChange}>12</UDBtn>
             </StyledDiv>
+            <StyledDiv>
+                <UDBtn onClick={SelectChange}>13</UDBtn>
+                <UDBtn onClick={SelectChange}>14</UDBtn>
+                <UDBtn onClick={SelectChange}>15</UDBtn>
+                <UDBtn onClick={SelectChange}>16</UDBtn>
+                <UDBtn onClick={SelectChange}>17</UDBtn>
+                <Seat>18</Seat>
+            </StyledDiv>
+            <StyledDiv>
+                <UDBtn onClick={SelectChange}>19</UDBtn>
+                <UDBtn onClick={SelectChange}>20</UDBtn>
+                <UDBtn onClick={SelectChange}>21</UDBtn>
+                <UDBtn onClick={SelectChange}>22</UDBtn>
+                <UDBtn onClick={SelectChange}>23</UDBtn>
+                <UDBtn onClick={SelectChange}>24</UDBtn>
+            </StyledDiv>
+            <StyledDiv>
+                <UDBtn onClick={SelectChange}>25</UDBtn>
+                <UDBtn onClick={SelectChange}>26</UDBtn>
+                <UDBtn onClick={SelectChange}>27</UDBtn>
+                <Seat>28</Seat>
+                <UDBtn onClick={SelectChange}>29</UDBtn>
+                <UDBtn onClick={SelectChange}>30</UDBtn>
+            </StyledDiv>
+
             <Collect>
                 <Occupied />
                 <p>: 이미 예매된 좌석</p>
@@ -139,26 +163,44 @@ export default function Select2() {
     )
 }
 
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+margin: 0 5vw;
+padding: 1rem 0;
+
+background-color: #d4d3c9;
+
+border: 1px solid black;
+`;
+
 const Vacation = styled.div`
-color: #fff;
 width: 25px;
 height: 25px;
-border: 1px solid #dbdee2;
-border-radius: 10px;
 margin-top: 1rem;
 margin-left: 1rem;
+
 background-color: #666;
+color: #fff;
+
+border: 1px solid #dbdee2;
+border-radius: 10px;
 `;
 
 const Selected = styled.div`
-color: #fff;
 width: 25px;
 height: 25px;
-border: 1px solid #dbdee2;
-border-radius: 10px;
 margin-top: 1rem;
 margin-left: 1rem;
+
 background-color: #ad1712;
+color: #fff;
+
+border: 1px solid #dbdee2;
+border-radius: 10px;
 `
 
 const Collect = styled.div`
@@ -166,49 +208,50 @@ display: flex;
 `;
 
 const Occupied = styled.div`
-color: #fff;
 width: 25px;
 height: 25px;
+margin-top: 1rem;
+
+background-color: #bbb;
+color: #fff;
+
 border: 1px solid #dbdee2;
 border-radius: 10px;
-margin-top: 1rem;
-background-color: #bbb;
 `;
 
 const Seat = styled.div`
-color: #fff;
+display: flex;
+justify-content: center;
+align-items: center;
+
 width: 40px;
 height: 40px;
-border: 1px solid #dbdee2;
-border-radius: 10px;
 margin: 0 5px;
+
 background-color: #bbb;
+color: #fff;
+
+border-radius: 10px;
+font-size: small;
 `;
 
 const ScreenDiv = styled.div`
-background-color: #E6E6E6;
 width: 20em;
 height: 10em;
 margin-top: 2rem;
 margin-bottom: 1rem;
+
+background-color: #E6E6E6;
+
 border-radius: 1rem;
 box-shadow: 0px 0px 1rem #000;
-`;
-
-const Container = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-background-color: #d4d3c9;
-padding-top: 1rem;
-border: 1px solid black;
 `;
 
 const StyledDiv = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
+
 margin-top: 1rem;
 `;
 
@@ -217,34 +260,28 @@ display: none;
 `;
 
 const StyledSelect2 = styled.select`
-margin-top: 2rem;
 all: unset;
+
+margin-top: 2rem;
+padding: 5px 10px;
+
 border: 1px solid red;
 border-radius: 20px;
-padding: 5px 10px;
 text-align: center;
-transition: 0.2s;
 cursor: pointer;
-
-// &:hover {
-//     color: red;
-//     transform: translateY(-5px);
-// }
 `;
 
 const UDBtn = styled.button`
-background-color: #666;
 width: 40px;
 height: 40px;
-border: 1px solid #dbdee2;
-border-radius: 10px;
 margin: 0 5px;
-color: #404a5c;
+
+background-color: #666;
+color: white;
+
+border: none;
+border-radius: 10px;
 cursor: pointer;
-&:hover {
-    color: white;
-    background-color: black;
-}
 `;
 
 const PurchaseBtn = styled.button`
