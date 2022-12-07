@@ -1,29 +1,27 @@
 import styled, { StyledComponent } from 'styled-components';
 import { Movie } from '../constants';
-import { render } from 'react-dom';
-import { ChangeEvent, Fragment, useState } from 'react';
-import { ReactDOM } from 'react';
+import { useState } from 'react';
 import React from 'react';
 import MovieTeaser from './movieTeaser';
+import Router from 'next/router';
 
 const StyledMovie = styled.section`
-  width: 15%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  max-height: 350px;
+  max-height: 400px;
 `;
 
 const StyledmovieName = styled.p`
   width: 100%;
-  font-size: 1.8%;
   color: whitesmoke;
   font-weight: 100;
 `;
 
 const StyledmovieImage = styled.img`
-  max-height: 300px;
+  max-height: 350px;
   width: 100%;
   object-fit: cover;
   display: flex;
@@ -38,7 +36,6 @@ const StyledmovieButton = styled.button`
   color: #fff;
   background-color: #037b94;
   border: none;
-  font-size: 1.8%;
   font-weight: 600;
   &:hover {
     cursor: pointer;
@@ -52,8 +49,20 @@ export default function MovieComponent({
   imgSrc,
   imgAlt,
   movieURL,
+  moviePrice,
 }: Movie) {
   const [modal, setModal] = useState<Boolean>(false);
+
+  const movieimgonClick = (event: React.MouseEvent<HTMLImageElement>) => {
+    Router.push(
+      {
+        pathname: '/booking',
+        query: { moviename: name, movieimg: imgSrc, movieprice: moviePrice },
+      },
+      'booking'
+    );
+  };
+
   const showTeaser = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     if (modal) {
@@ -65,7 +74,7 @@ export default function MovieComponent({
   return (
     <>
       <StyledMovie>
-        <StyledmovieImage src={imgSrc} alt={imgAlt} />
+        <StyledmovieImage onClick={movieimgonClick} src={imgSrc} alt={imgAlt} />
         <StyledmovieName>{name}</StyledmovieName>
         <StyledmovieButton onClick={showTeaser}>티저보기</StyledmovieButton>
       </StyledMovie>
