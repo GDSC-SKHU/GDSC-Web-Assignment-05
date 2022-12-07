@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import MovieImg from "./MovieImg";
+import { useRouter } from "next/router";
 
 const MainSection = () => {
+  //useRouter
+  const router = useRouter();
   return (
     <Section>
       <div className="moviechart">무비차트</div>
@@ -20,6 +23,14 @@ const MainSection = () => {
         />
         <MovieImg myNum={5} title="탄생" source="/images/movie1.jpg" />
       </SectionMovieImg>
+
+      <button
+        onClick={() => {
+          router.push("/booking");
+        }}
+      >
+        예매
+      </button>
     </Section>
   );
 };
