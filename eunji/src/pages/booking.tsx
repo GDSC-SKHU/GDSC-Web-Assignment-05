@@ -13,6 +13,14 @@ export default function Booking() {
     )
 }
 
+// const Container = styled.div`
+// background-color: #d4d3c9;
+// display: flex;
+// flex-direction: column;
+// justify-content: center;
+// align-items: center;
+// `;
+
 const StyledP = styled.p `
 text-align: center;
 `;
