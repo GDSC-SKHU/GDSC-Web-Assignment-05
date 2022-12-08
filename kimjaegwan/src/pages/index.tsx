@@ -1,7 +1,16 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import Movie from '../components/Movie';
 
-export default function Home() {
-    return <div>hello</div>;
-}
+const Home = () => {
+    return (
+        <>
+            <article>
+                <Movie />
+            </article>
+        </>
+    );
+};
+
+export default Home;
