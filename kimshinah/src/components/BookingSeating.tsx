@@ -14,5 +14,6 @@ export default BookingSeating;
 
 const BookingContainer = styled.section`
   width: 70vw;
+  height: 70vh;
   margin: 1.5em auto;
 `;

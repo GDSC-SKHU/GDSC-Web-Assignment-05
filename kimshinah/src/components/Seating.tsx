@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 const Seating = () => {
-  return <SeatingCss></SeatingCss>;
+  const changeOccupiedStatus = () => {
+    console.log("좌석 선택");
+  };
+  return <SeatingCss onClick={changeOccupiedStatus}></SeatingCss>;
 };
 export default Seating;
 
 const SeatingCss = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 1em;
+  height: 1em;
   background: black;
-  display: flex;
 `;
