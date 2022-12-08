@@ -1,7 +1,8 @@
 import type { AppProps } from 'next/app';
 import GlobalStyle from '../styles/GlobalStyle';
 import '../../public/fonts/font.css';
-import Nav from '../components/nav';
+import Nav from '../components/UI/nav';
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
