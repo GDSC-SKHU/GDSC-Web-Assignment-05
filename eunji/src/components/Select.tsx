@@ -105,7 +105,7 @@ export default function Select() {
                 <option value={'범죄도시2'}>범죄도시2(800원)</option>
             </StyledSelect2>
 
-            <ScreenDiv />
+            <ScreenDiv>screen</ScreenDiv>
 
             <SeatList>
                 <SelectSeat onClick={SelectChange}>1</SelectSeat>
@@ -206,6 +206,8 @@ margin-bottom: 1rem;
 background-color: #E6E6E6;
 
 border-radius: 1rem;
+text-align: center;
+opacity: 0.6;
 box-shadow: 0px 0px 1rem #000;
 `;
 

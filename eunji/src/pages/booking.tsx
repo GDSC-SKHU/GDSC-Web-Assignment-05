@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Select from "../components/Select";
 
 export default function Booking() {
-    return(
+    return (
         <Container>
             <Select />
         </Container>
