@@ -11,6 +11,14 @@ interface Moviequery {
   movieimg: undefined | string | string[];
 }
 const MOVIE_SEAT_ERRORMESSAGE: string = '잘못된 좌석 선택입니다';
+const POSSIBLE_SEAT_COLOR: string = '#b1b1b1';
+const NOT_POSSIBLE_SEAT_COLOR: string = 'red';
+const CURRENT_SEAT_COLOR: string = '#50bcdf';
 
 export type { Movie, Moviequery };
-export default MOVIE_SEAT_ERRORMESSAGE;
+export {
+  MOVIE_SEAT_ERRORMESSAGE,
+  POSSIBLE_SEAT_COLOR,
+  NOT_POSSIBLE_SEAT_COLOR,
+  CURRENT_SEAT_COLOR,
+};
