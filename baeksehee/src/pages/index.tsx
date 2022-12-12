@@ -1,3 +1,5 @@
+import List from "../components/Movie";
+
 export default function Home() {
-return<div>hi</div>;
+return<div><List/></div>;
 }
