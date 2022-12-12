@@ -12,6 +12,7 @@ export default function Purchase() {
     return (
         <Container>
             <h2>선택하신 영화: {router.query.name}</h2>
+            <img src="{router.query.poster}" />
             <Summary>
                 <StyledDiv>
                     <StyledH3>결제하실 금액</StyledH3>
@@ -28,11 +29,14 @@ export default function Purchase() {
 }
 
 const Container = styled.div`
-margin-left: 1rem;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+
+margin-left: 1rem;
+
+background-color: #d4d3c9;
 `;
 
 const Summary = styled.div`
@@ -47,14 +51,16 @@ height: 5rem;
 margin-right: 1rem;
 margin-bottom: 1rem;
 
-text-align: center;
 border: 1px solid black;
 border-radius: 5px;
+
+text-align: center;
 `;
 
 const StyledH3 = styled.h3`
 margin: 0;
 padding: 10px;
+
 border-bottom: 1px solid black;
 `;
 
@@ -71,7 +77,6 @@ color: #fff;
 
 border: 1px solid #ad1712;
 border-radius: 10px;
-
 cursor: pointer;
 
 &:hover {

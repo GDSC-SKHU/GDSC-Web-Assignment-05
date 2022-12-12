@@ -14,6 +14,8 @@ export default function Select() {
     const [total, setTotal] = useState<number>(3);
     // 영화 이름
     const [name, setName] = useState<string>('Aladin');
+    // 영화 이미지
+    const [poster, setPoster] = useState<string>('');
     // router query를 위하여 정의
     const router = useRouter();
 
@@ -24,6 +26,7 @@ export default function Select() {
         // 만약 value가 600, 700, 800이면 setName을 그 값에 해당하는 영화 이름으로 바꿔라.
         if (e.target.value == '600') {
             setName(String('Aladin'));
+            setPoster("movie1.jpg");
         }
         if (e.target.value == '700') {
             setName(String('Beauty and the Beast'));
@@ -88,7 +91,7 @@ export default function Select() {
             // purchase로 이동하고
             pathname: '/purchase',
             // 해당 값들을 purchase로 넘겨라
-            query: { name: name, person: person, price: total },
+            query: { poster: poster, name: name, person: person, price: total },
         });
     };
 
