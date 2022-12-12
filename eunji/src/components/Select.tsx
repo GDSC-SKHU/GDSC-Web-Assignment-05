@@ -12,23 +12,25 @@ export default function Select() {
     const [price, setPrice] = useState<number>(600);
     // 총 가격
     const [total, setTotal] = useState<number>(3);
-    // 영화 제목의 router query
+    // 영화 이름
     const [name, setName] = useState<string>('Aladin');
     // router query를 위하여 정의
     const router = useRouter();
 
-    // 영화 선택될 때마다 가격 바뀌게 하기
+    // 영화 선택될 때마다 가격, 영화제목 바뀌게 하기
     const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        const { value } = e.target;
         setPrice(Number(e.target.value));
-        // 가격이니까 기본형인 string 말고 Number로 지정
-    };
 
-    // 영화 제목 router query(새로 선택해야 해서 다른 방법 구상 중)
-    const onSelectChange2 = (e: { target: { value: any; }; }) => {
-        // option의 value를 찾아 전송되는 값을 변하게 하기
-        const { value } = e.target;
-        setName(e.target.value);
+        // 만약 value가 600, 700, 800이면 setName을 그 값에 해당하는 영화 이름으로 바꿔라.
+        if (e.target.value == '600') {
+            setName(String('Aladin'));
+        }
+        if (e.target.value == '700') {
+            setName(String('Beauty and the Beast'));
+        }
+        if (e.target.value == '800') {
+            setName(String('범죄도시2'));
+        }
     };
 
     // 선택한 인원만큼 가격 증가
@@ -39,7 +41,7 @@ export default function Select() {
 
     // 좌석 선택 가능하게 하기
     const SelectChange = (e: React.MouseEvent<HTMLButtonElement>) => {
-        const selectColor = e.currentTarget;
+        const selectStyle = e.currentTarget;
         const changeSeat = e.currentTarget.innerHTML;
 
         // 만약 changeSeat이 selectArray에 포함된다면
@@ -48,7 +50,7 @@ export default function Select() {
             // indexSeat를 삭제하고(기본값)
             delete selectArray[indexSeat];
             // 배경색을 변경하고
-            selectColor.style.backgroundColor = "#666";
+            selectStyle.style.backgroundColor = "#666";
             // 값을 줄여라
             setPerson(person - 1);
         }
@@ -57,7 +59,7 @@ export default function Select() {
             // selectArray의 changeSeat을 클릭했을 때
             selectArray.push(changeSeat);
             // 배경색을 변경하고
-            selectColor.style.backgroundColor = "#ad1712";
+            selectStyle.style.backgroundColor = "#ad1712";
             // 값을 늘려라
             setPerson(person + 1);
         }
@@ -98,12 +100,6 @@ export default function Select() {
                 <option value={700}>Beauty and the Beast(700원)</option>
                 <option value={800}>범죄도시2(800원)</option>
             </StyledSelect>
-
-            <StyledSelect2 value={name} onChange={onSelectChange2}>
-                <option value={'Aladin'}>Aladin(600원)</option>
-                <option value={'Beauty and the Beast'}>Beauty and the Beast(700원)</option>
-                <option value={'범죄도시2'}>범죄도시2(800원)</option>
-            </StyledSelect2>
 
             <ScreenDiv>screen</ScreenDiv>
 
@@ -193,13 +189,9 @@ font-weight: bold;
 cursor: pointer;
 `;
 
-const StyledSelect2 = styled.select`
-display: none;
-`;
-
 const ScreenDiv = styled.div`
 width: 20em;
-height: 10em;
+height: 5em;
 margin-top: 2rem;
 margin-bottom: 1rem;
 
@@ -225,8 +217,8 @@ width: fit-content;
 `;
 
 const Occupied = styled.div`
-width: 25px;
-height: 25px;
+width: 20px;
+height: 20px;
 margin-top: 1rem;
 
 background-color: #bbb;
@@ -237,8 +229,8 @@ border-radius: 10px;
 `;
 
 const Selected = styled.div`
-width: 25px;
-height: 25px;
+width: 20px;
+height: 20px;
 margin-top: 1rem;
 margin-left: 1rem;
 
@@ -250,8 +242,8 @@ border-radius: 10px;
 `;
 
 const Vacate = styled.div`
-width: 25px;
-height: 25px;
+width: 20px;
+height: 20px;
 margin-top: 1rem;
 margin-left: 1rem;
 
