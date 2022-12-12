@@ -1,12 +1,11 @@
 import styled, { StyledComponent } from 'styled-components';
-import { Movie } from '../constants';
+import { Movie } from '../../constants';
 import { useState } from 'react';
 import React from 'react';
 import MovieTeaser from './movieTeaser';
 import Router from 'next/router';
 
 const StyledMovie = styled.section`
-  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +20,7 @@ const StyledmovieName = styled.p`
 `;
 
 const StyledmovieImage = styled.img`
-  max-height: 350px;
+  height: 80%;
   width: 100%;
   object-fit: cover;
   display: flex;
@@ -36,6 +35,7 @@ const StyledmovieButton = styled.button`
   color: #fff;
   background-color: #037b94;
   border: none;
+  display: block;
   font-weight: 600;
   &:hover {
     cursor: pointer;
@@ -54,13 +54,9 @@ export default function MovieComponent({
   const [modal, setModal] = useState<Boolean>(false);
 
   const movieimgonClick = (event: React.MouseEvent<HTMLImageElement>) => {
-    Router.replace(
-      {
-        pathname: '/booking',
-        query: { moviename: name, movieimg: imgSrc, movieprice: moviePrice },
-      },
-      'booking' + ' ' + `${name}`
-    );
+    Router.push({
+      pathname: '/booking',
+    });
   };
 
   const showTeaser = (event: React.MouseEvent<HTMLButtonElement>) => {

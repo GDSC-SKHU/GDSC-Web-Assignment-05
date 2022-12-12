@@ -92,4 +92,17 @@ export default () => (<div><StyledLink href="mylink">MyText</StyledLink></div>)
 ```
 
 - Router.push에 두번쨰 인자로, 실제 URL에 표시될 이름을 넣어주고, 쿼리를 전달하
-  면 `booking` URL에서 쿼리를 잘 받을 수 있음
+  면 `booking`이라는 이름의 URL에서 쿼리를 잘 받을 수 있음
+
+#### 라우터 Push vs replace의 차이
+
+- 라우터 기록은 `stack`처럼 작동함. `replace` 사용 시,스택의 맨 위에 덮어씌우게
+  됨.
+
+```
+Home > Item > Login > Item 순으로 페이지를 이동했을 때
+Login에서 push,replace를 사용한 경우
+
+push는 Home > Item > Login > Item 순으로 쌓이고, 뒤로 가기를 누르면 Login으로 이동
+replace는 Home > Item > Item 순으로 쌓여서 , 뒤로 가기를 누르면 Item으로 이동
+```

@@ -17,7 +17,7 @@ const StyledpurchaseImg = styled.img`
   width: auto;
   object-fit: contain;
 `;
-export default function purchase() {
+export default function Purchase() {
   const router = useRouter();
   const { totalprice, moviename, totalseat, movieimg } = router.query;
 

@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
 import MovieComponent from '../components/Movie/movie';
 import styled from 'styled-components';
+import React from 'react';
 
 const StyledHome = styled.article`
   display: flex;
@@ -11,9 +11,9 @@ const StyledHome = styled.article`
   margin: 2% auto;
 `;
 
-export default function Home() {
+export default function Allmovies() {
   return (
-    <Fragment>
+    <>
       <StyledHome>
         <MovieComponent
           name="라라랜드"
@@ -51,6 +51,6 @@ export default function Home() {
           moviePrice={10000}
         ></MovieComponent>
       </StyledHome>
-    </Fragment>
+    </>
   );
 }
