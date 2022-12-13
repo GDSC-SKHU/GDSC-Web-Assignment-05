@@ -23,13 +23,15 @@ const Seats = ({ count }) => {
         console.log(e.currentTarget.id); //
         const id = Number(e.currentTarget.id);
 
-        setSeatsState(() => {
-            const currentSeatState = [...seatsState];
-            console.log(currentSeatState + 'logs');
+        setSeatsState((c: any) => {
+            const currentSeatState = [...c];
             console.log(currentSeatState[id].status);
             if (currentSeatState[id].status == 'vacancy') {
                 currentSeatState[id].status = 'occupied';
             }
+            // } else if (currentSeatState[id].status == 'occupied') {
+            //     currentSeatState[id].status == 'vacancy';
+            // }  ? 이 부분이 작동을 안합니다.
 
             return currentSeatState;
         });
