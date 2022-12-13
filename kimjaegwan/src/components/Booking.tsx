@@ -19,6 +19,7 @@ interface IColorSet {
 }
 
 const Seats = ({ count }) => {
+    //? Dispatch를 찾을 수 없다는 에러가 떠서 해결하지 못하고 any로 함
     const SeatOnClick = (e: React.MouseEvent<HTMLElement>) => {
         console.log(e.currentTarget.id); //
         const id = Number(e.currentTarget.id);
@@ -28,7 +29,10 @@ const Seats = ({ count }) => {
             console.log(currentSeatState[id].status);
             if (currentSeatState[id].status == 'vacancy') {
                 currentSeatState[id].status = 'occupied';
+            } else if (currentSeatState[id].status == 'occupied') {
+                currentSeatState[id].status = 'vacancy';
             }
+
             // } else if (currentSeatState[id].status == 'occupied') {
             //     currentSeatState[id].status == 'vacancy';
             // }  ? 이 부분이 작동을 안합니다.
@@ -79,7 +83,7 @@ const Seats = ({ count }) => {
 };
 
 const Booking = () => {
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState<numb>(0);
     const [price, setPrice] = useState<number>(3);
     const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
         setPrice(Number(e.target.value));
@@ -121,6 +125,7 @@ const Booking = () => {
             ) : (
                 <button>좌석을 선택하세요.</button>
             )}
+            {/* <button onClick={history.push("/~")}>리셋하기</button> */}
         </StyledBooking>
     );
 };
