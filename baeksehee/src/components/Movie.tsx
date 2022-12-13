@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 
 interface IMovie {
@@ -28,28 +29,37 @@ const movie: IMovie[] = [
 
 function List() {
   return (
-    <StyledDiv>
+    <StyledBody>
+      <StyledArticle>
         <StyledH1>영화관</StyledH1>
 
-      {movie.map((each, index) => {
-        return (
-          <StyledArticle key={index}>
-            <img src={each.poster} alt="포스터사진" />
-            <br />
-            <br />
-            <StyledSpan>제목:{each.title}</StyledSpan>
-            <br />
-            <StyledP>소개:{each.introduce}</StyledP>
-          </StyledArticle>
-        );
-      })}
-    </StyledDiv>
+        {movie.map((each, index) => {
+          return (
+            <StyledDiv key={index}>
+              <Link href="../booking"><img src={each.poster} alt="포스터사진" /></Link> 
+              <br />
+              <br />
+              <StyledSpan>제목:{each.title}</StyledSpan>
+              <br />
+              <StyledP>소개:{each.introduce}</StyledP>
+            </StyledDiv>
+          );
+        })}
+      </StyledArticle>
+    </StyledBody>
   );
 }
 
 export default List;
 
-const StyledDiv = styled.div`
+const StyledBody = styled.body`
+  margin: 0;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  background-color: #010101;
+`;
+
+const StyledArticle = styled.article`
   background-color: #010101;
 
   display: flex;
@@ -66,7 +76,7 @@ const StyledH1 = styled.h1`
   margin-left: 25px;
 `;
 
-const StyledArticle = styled.article`
+const StyledDiv = styled.div`
   padding-top: 60px;
   padding-left: 40px;
 
