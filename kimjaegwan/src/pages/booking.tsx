@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
+import Booking from '../components/Booking';
 
 const booking = () => {
-    return <div>booking</div>;
+    return <Booking />;
 };
 
 export default booking;
