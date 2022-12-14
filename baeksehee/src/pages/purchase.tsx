@@ -13,7 +13,7 @@ export default function Purchase() {
             <br />
           </StyledSpan>
           <br />
-          인원: {router.query.number}명, 결제 금액: {router.query.result}
+          인원: {router.query.number}명, 결제 금액: {router.query.result}원
           <br />
           <p>감사합니다!</p>
         </StyledP>
@@ -24,11 +24,10 @@ export default function Purchase() {
 const StyledBody = styled.body`
   padding: 0;
   margin: 0;
-  background-color: #010101;
 `;
 
 const StyledP = styled.p`
-  color: pink;
+  color: white;
   text-align: center;
 `;
 

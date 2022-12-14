@@ -1,10 +1,12 @@
 import type { AppProps } from "next/app";
 import Link from "next/link";
 import styled from "styled-components";
+import GlobalStyle from "../styles/GlobalStyle";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+      <GlobalStyle />
       <StyledBody>
         <nav>
           <StyledImg src="../megabox.png"></StyledImg>
@@ -30,7 +32,6 @@ const StyledBody = styled.body`
   padding-top: 20px;
 
   padding-bottom: 50px;
-  background-color: #010101;
 `;
 
 const StyledImg = styled.img`

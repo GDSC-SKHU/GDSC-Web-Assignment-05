@@ -39,17 +39,17 @@ function List() {
   return (
     <StyledBody>
       <StyledArticle>
-       
-
         {movie.map((each, index) => {
           return (
             <StyledDiv key={index}>
               <Link href="../booking">
-                <StyledImgWrap><StyledImg src={each.poster} alt="포스터사진" /></StyledImgWrap>
+                <StyledImgWrap>
+                  <StyledImg src={each.poster} alt="포스터사진" />
+                </StyledImgWrap>
               </Link>
               <br />
               <br />
-              <StyledSpan>제목:{each.title}</StyledSpan>
+              <StyledSpan>{each.title}</StyledSpan>
               <br />
               <StyledP>소개:{each.introduce}</StyledP>
             </StyledDiv>
@@ -66,17 +66,13 @@ const StyledBody = styled.body`
   margin: 0;
   padding-bottom: 10px;
   padding-right: 10px;
-  background-color: #010101;
 `;
 
 const StyledArticle = styled.article`
-  background-color: #010101;
-
   display: flex;
   justify-content: space-evenly;
   gap: 25px;
 `;
-
 
 const StyledDiv = styled.div`
   padding-top: 60px;
@@ -92,7 +88,7 @@ const StyledDiv = styled.div`
 const StyledImgWrap = styled.div`
   width: 220px;
   height: 282px;
-`
+`;
 
 const StyledImg = styled.img`
   width: 200px;

@@ -44,13 +44,6 @@ export default function Booking() {
     alert("이미 예약된 좌석입니다.");
   };
 
-  const onclickReset = () => {
-    if (number >= 0) {
-      setNumber(0);
-      setPrice(0);
-    }
-  };
-
   const onClickPurchase = () => {
     if (number <= 0) {
       alert("좌석을 선택하지 않으셨습니다.");
@@ -66,13 +59,13 @@ export default function Booking() {
   return (
     <StyledBox>
       <StyledH1>영화 고르기</StyledH1>
-      <select value={price} onChange={onSelectChange}>
-        <option value={10000}>아바타 2, 10000원</option>
-        <option value={11000}>엔드게임, 11000원</option>
-        <option value={12000}>노웨이홈, 12000원</option>
-        <option value={13000}>올빼미, 13000원</option>
-        <option value={14000}>트와일라잇, 14000원</option>
-      </select>
+      <StyledSelect value={price} onChange={onSelectChange}>
+        <StyledOption value={10000}>아바타 2, 10000원</StyledOption>
+        <StyledOption value={11000}>엔드게임, 11000원</StyledOption>
+        <StyledOption value={12000}>노웨이홈, 12000원</StyledOption>
+        <StyledOption value={13000}>올빼미, 13000원</StyledOption>
+        <StyledOption value={14000}>트와일라잇, 14000원</StyledOption>
+      </StyledSelect>
 
       <StyledH2>
         {name} 좌석 선택하기
@@ -140,8 +133,7 @@ export default function Booking() {
         {number} 명 {result} 원
       </StyledH3>
 
-      <button onClick={onclickReset}>초기화</button>
-      <button onClick={onClickPurchase}>결제하기</button>
+      <StyledButtonTwo onClick={onClickPurchase}>결제하기</StyledButtonTwo>
     </StyledBox>
   );
 }
@@ -152,6 +144,14 @@ const StyledBox = styled.div`
 
 const StyledH1 = styled.h1`
   color: white;
+`;
+
+const StyledSelect = styled.select`
+  background-color: white;
+`;
+
+const StyledOption = styled.option`
+  background-color: purple;
 `;
 
 const StyledH2 = styled.h2`
@@ -179,4 +179,8 @@ const StyledButton = styled.button`
 
 const StyledH3 = styled.h3`
   color: white;
+`;
+
+const StyledButtonTwo = styled.button`
+  background-color: white;
 `;
