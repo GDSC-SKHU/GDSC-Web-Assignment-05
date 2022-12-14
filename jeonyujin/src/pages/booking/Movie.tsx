@@ -54,19 +54,19 @@ export default function Movie() {
     setID(Number(e.target.value));
 
     if (e.target.value == "1") {
-      setTitle(String("검사외전"));
+      setTitle("검사외전");
       setPrice(10000);
     } else if (e.target.value == "2") {
-      setTitle(String("청년경찰"));
+      setTitle("청년경찰");
       setPrice(9000);
     } else if (e.target.value == "3") {
-      setTitle(String("마녀"));
+      setTitle("마녀");
       setPrice(8000);
     } else if (e.target.value == "4") {
-      setTitle(String("전우치"));
+      setTitle("전우치");
       setPrice(10000);
     } else if (e.target.value == "5") {
-      setTitle(String("서치"));
+      setTitle("서치");
       setPrice(8000);
     }
   };

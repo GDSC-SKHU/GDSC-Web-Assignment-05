@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import styled from "styled-components";
 import GlobalStyle from "../../styles/GlobalStyle";
+import Main from "./components/Main";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
