@@ -73,14 +73,14 @@ const StyledBtn = styled.button`
 padding: 8px 15px;
 
 background-color: #ad1712;
-color: #fff;
+color: #d4d3c9;
 
 border: 1px solid #ad1712;
 border-radius: 10px;
 cursor: pointer;
 
 &:hover {
-    background-color: #fff;
+    background-color: #d4d3c9;
     color: #ad1712;
 
     border: 1px solid #ad1712;
