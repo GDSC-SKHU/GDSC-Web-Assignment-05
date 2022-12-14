@@ -5,7 +5,7 @@ export default function Purchase() {
   const router = useRouter();
 
   return (
-    <StyledBody>
+    <StyledDiv>
       <div>
         <StyledP>
           <StyledSpan>
@@ -18,10 +18,10 @@ export default function Purchase() {
           <p>감사합니다!</p>
         </StyledP>
       </div>
-    </StyledBody>
+    </StyledDiv>
   );
 }
-const StyledBody = styled.body`
+const StyledDiv = styled.div`
   padding: 0;
   margin: 0;
 `;

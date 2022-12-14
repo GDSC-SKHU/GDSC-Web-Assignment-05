@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
-      <StyledBody>
+      <StyledDivBox>
         <nav>
           <StyledImg src="../megabox.png"></StyledImg>
 
@@ -20,14 +20,14 @@ export default function App({ Component, pageProps }: AppProps) {
             </Link>
           </p>
         </nav>
-      </StyledBody>
+      </StyledDivBox>
 
       <Component {...pageProps} />
     </>
   );
 }
 
-const StyledBody = styled.body`
+const StyledDivBox = styled.div`
   margin: 0;
   padding-top: 20px;
 

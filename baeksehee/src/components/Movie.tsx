@@ -37,7 +37,7 @@ const movie: IMovie[] = [
 
 function List() {
   return (
-    <StyledBody>
+    <StyledDivBigBox>
       <StyledArticle>
         {movie.map((each, index) => {
           return (
@@ -56,13 +56,13 @@ function List() {
           );
         })}
       </StyledArticle>
-    </StyledBody>
+    </StyledDivBigBox>
   );
 }
 
 export default List;
 
-const StyledBody = styled.body`
+const StyledDivBigBox = styled.div`
   margin: 0;
   padding-bottom: 10px;
   padding-right: 10px;
