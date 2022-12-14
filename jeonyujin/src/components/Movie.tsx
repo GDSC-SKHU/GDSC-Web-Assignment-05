@@ -92,13 +92,14 @@ export default function Movie() {
     <StyledBox>
       <StyledH1>영화 예매하기</StyledH1>
       <select>
-        <StyledSelect value={id} onChange={onSelectChange}>
+        <select value={id} onChange={onSelectChange}>
+          {/* onChange */}
           <option value={1}>검사외전(10000원)</option>
           <option value={2}>청년경찰(9000원)</option>
           <option value={3}>마녀(8000원)</option>
           <option value={4}>전우치(10000원)</option>
           <option value={5}>서치(8000원)</option>
-        </StyledSelect>
+        </select>
       </select>
 
       <StyledSeats>
@@ -156,10 +157,6 @@ export default function Movie() {
 
 const StyledBox = styled.div`
   text-align: center;
-`;
-
-const StyledSelect = styled.div`
-  background-color: aliceblue;
 `;
 
 const StyledP = styled.p`
