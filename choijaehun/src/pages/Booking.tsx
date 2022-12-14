@@ -10,6 +10,10 @@ interface IMovie {
   color: string;
 }
 
+interface IColorSet {
+  [key: string]: string;
+}
+
 const INITCOLOR = "#fc9595";
 
 export default function Booking() {
@@ -43,7 +47,14 @@ export default function Booking() {
   const [currentSeatBtn, setCurrentSeatBtn] = useState<string>("");
 
   const onSelectSeat = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setWatchNum((prev) => prev + 1);
+    const selectColor = e.currentTarget;
+    if (selectColor.style.backgroundColor != "#9bb37f") {
+      selectColor.style.backgroundColor = "#9bb37f";
+      setWatchNum((prev) => prev + 1);
+    } else {
+      selectColor.style.backgroundColor = "#ffffff";
+      setWatchNum((prev) => prev - 1);
+    }
   };
 
   // 선택된 좌석의 수 ?
@@ -132,40 +143,41 @@ export default function Booking() {
 
         <StyledSeats>
           <StyledSelectSeat
-            onClick={() => {
-              setIsActive((prev) => !prev);
-            }}
-            background-color={isActive ? INITCOLOR : "red"}
+            onClick={onSelectSeat}
+            // onClick={() => {
+            //   setIsActive((prev) => !prev);
+            // }}
+            // background-color={isActive ? INITCOLOR : "red"}
           >
             1
           </StyledSelectSeat>
-          <StyledSelectSeat>2</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>2</StyledSelectSeat>
           <StyledOccupiedSeat>3</StyledOccupiedSeat>
-          <StyledSelectSeat>4</StyledSelectSeat>
-          <StyledSelectSeat>5</StyledSelectSeat>
-          <StyledSelectSeat>6</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>4</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>5</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>6</StyledSelectSeat>
         </StyledSeats>
         <StyledSeats>
-          <StyledSelectSeat>7</StyledSelectSeat>
-          <StyledSelectSeat>8</StyledSelectSeat>
-          <StyledSelectSeat>9</StyledSelectSeat>
-          <StyledSelectSeat>10</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>7</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>8</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>9</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>10</StyledSelectSeat>
           <StyledOccupiedSeat>11</StyledOccupiedSeat>
-          <StyledSelectSeat>12</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>12</StyledSelectSeat>
         </StyledSeats>
         <StyledSeats>
-          <StyledSelectSeat>13</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>13</StyledSelectSeat>
           <StyledOccupiedSeat>14</StyledOccupiedSeat>
-          <StyledSelectSeat>15</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>15</StyledSelectSeat>
           <StyledOccupiedSeat>16</StyledOccupiedSeat>
-          <StyledSelectSeat>17</StyledSelectSeat>
-          <StyledSelectSeat>18</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>17</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>18</StyledSelectSeat>
         </StyledSeats>
         <StyledSeats>
           <StyledOccupiedSeat>19</StyledOccupiedSeat>
-          <StyledSelectSeat>20</StyledSelectSeat>
-          <StyledSelectSeat>21</StyledSelectSeat>
-          <StyledSelectSeat>22</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>20</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>21</StyledSelectSeat>
+          <StyledSelectSeat onClick={onSelectSeat}>22</StyledSelectSeat>
           <StyledOccupiedSeat>23</StyledOccupiedSeat>
           <StyledOccupiedSeat>24</StyledOccupiedSeat>
         </StyledSeats>
@@ -218,7 +230,7 @@ const StyledSelectSeat = styled.button`
   align-items: center;
   width: 50px;
   height: 50px;
-  background-color: #eafce6;
+  background-color: white;
   border: none;
   border-radius: 50%;
   cursor: pointer;
