@@ -2,6 +2,40 @@ import { useRouter } from "next/router";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 
+// interface Movie {
+//   id: number;
+//   title: string;
+//   price: number;
+// }
+
+// const Movies: Movie[] = [
+//   {
+//     id: 0,
+//     title: '검사외전',
+//     price: 500,
+//   },
+//   {
+//     id: 1,
+//     title: '청년경찰',
+//     price: 400,
+//   },
+//   {
+//     id: 2,
+//     title: '마녀',
+//     price: 300,
+//   },
+//   {
+//     id: 3,
+//     title: '전우치',
+//     price: 500,
+//   },
+//   {
+//     id: 4,
+//     title: '서치',
+//     price: 300,
+//   },
+// ];
+
 export default function Movie() {
   const [people, setPeople] = useState<number>(0);
   // 인원 수
@@ -30,12 +64,14 @@ export default function Movie() {
       setPrice(8000);
     } else if (e.target.value == "4") {
       setTitle(String("전우치"));
-      setPrice(7000);
+      setPrice(10000);
     } else if (e.target.value == "5") {
       setTitle(String("서치"));
-      setPrice(6000);
+      setPrice(8000);
     }
   };
+  // 비효율적인 것 같음
+  // interface 작성 후 change로 불러오려고 Movies.id를 적어보니 속성이 없다고 함
 
   useEffect(() => {
     setResult(price * people);
@@ -48,6 +84,7 @@ export default function Movie() {
   };
   // 미선택 시 초기화
 
+  // 좌석 선택 이벤트
   const onClickSeat = (e: React.MouseEvent<HTMLElement>) => {
     const SeatStyle = e.currentTarget;
     if (e.currentTarget.classList.contains("occupied")) {
@@ -57,6 +94,7 @@ export default function Movie() {
       setPeople(people - 1);
       SeatStyle.style.backgroundColor = "blue";
       SeatStyle.classList.remove("selected");
+      // else if 구문 미작동
     } else {
       setPeople(people + 1);
       SeatStyle.classList.add("seleted");
@@ -82,6 +120,7 @@ export default function Movie() {
       pathname: "/",
     });
   };
+  // 이전 페이지
 
   return (
     <StyledBox>
@@ -91,14 +130,15 @@ export default function Movie() {
           <option value={1}>검사외전(10000원)</option>
           <option value={2}>청년경찰(9000원)</option>
           <option value={3}>마녀(8000원)</option>
-          <option value={4}>전우치(7000원)</option>
-          <option value={5}>서치(6000원)</option>
+          <option value={4}>전우치(10000원)</option>
+          <option value={5}>서치(8000원)</option>
         </select>
       </StyledSelect>
 
       <StyledSeats>
         <StyledP>영화관</StyledP>
         <StyledScreen>screen</StyledScreen>
+        {/* 선택된 자석 및 미선택 좌석 무작위 배치 */}
         <div>
           <StyledSpan>A</StyledSpan>
           <EmptySeat onClick={onClickSeat}>A1</EmptySeat>

@@ -9,6 +9,7 @@ export default function Purchase() {
       pathname: "/",
     });
   };
+  // 초기 영화 화면으로 이동
 
   return (
     <>
