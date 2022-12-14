@@ -15,7 +15,7 @@ export default function Purchase() {
     <>
       <StyledBox>
         <StyledDiv>
-          <StyledH1>영화 제목: {router.query.title}</StyledH1>
+          <h1>영화 제목: {router.query.title}</h1>
           <StyledSection>
             <StyledArticle>
               <p>총 {router.query.people}명</p>
@@ -44,7 +44,6 @@ const StyledDiv = styled.div`
   flex-direction: column;
 `;
 
-const StyledH1 = styled.h1``;
 
 const StyledSection = styled.section`
   margin-bottom: 50px;
