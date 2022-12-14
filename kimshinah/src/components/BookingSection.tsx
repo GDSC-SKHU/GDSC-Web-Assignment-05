@@ -15,6 +15,7 @@ const BookingSection = () => {
   const [price, setPrice] = useState(0);
   const [movieNumber, setmovieNumber] = useState(3);
   const [movieName, setmovieName] = useState("엔시티 드림 더 무비");
+
   //숫자 10 이상으로 랜덤을 넣진 않을 것.
   const seatingOccupiedConst = [23, 24, 26, 32, 33, 36, 37, 38, 45, 46, 51, 53];
 
