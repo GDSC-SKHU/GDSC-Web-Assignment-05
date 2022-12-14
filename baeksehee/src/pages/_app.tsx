@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <StyledSpan>상영 영화 </StyledSpan>
             </Link>
             <Link href="/booking">
-              <StyledSpan>예매 하기</StyledSpan>
+              <StyledSpan>예매하기</StyledSpan>
             </Link>
           </p>
         </nav>
