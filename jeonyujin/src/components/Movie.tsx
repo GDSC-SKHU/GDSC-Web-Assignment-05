@@ -2,40 +2,6 @@ import { useRouter } from "next/router";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 
-// interface Movie {
-//   id: number;
-//   title: string;
-//   price: number;
-// }
-
-// const Movies: Movie[] = [
-//   {
-//     id: 0,
-//     title: '검사외전',
-//     price: 500,
-//   },
-//   {
-//     id: 1,
-//     title: '청년경찰',
-//     price: 400,
-//   },
-//   {
-//     id: 2,
-//     title: '마녀',
-//     price: 300,
-//   },
-//   {
-//     id: 3,
-//     title: '전우치',
-//     price: 500,
-//   },
-//   {
-//     id: 4,
-//     title: '서치',
-//     price: 300,
-//   },
-// ];
-
 export default function Movie() {
   const [people, setPeople] = useState<number>(0);
   // 인원 수
@@ -71,7 +37,7 @@ export default function Movie() {
     }
   };
   // 비효율적인 것 같음
-  // interface 작성 후 change로 불러오려고 Movies.id를 적어보니 속성이 없다고 함
+  // interface 작성 후 onChange로 불러오려고 Movies.id를 적어보니 속성이 없다고 함
 
   useEffect(() => {
     setResult(price * people);
@@ -126,13 +92,13 @@ export default function Movie() {
     <StyledBox>
       <StyledH1>영화 예매하기</StyledH1>
       <select>
-        <select value={id} onChange={onSelectChange}>
+        <StyledSelect value={id} onChange={onSelectChange}>
           <option value={1}>검사외전(10000원)</option>
           <option value={2}>청년경찰(9000원)</option>
           <option value={3}>마녀(8000원)</option>
           <option value={4}>전우치(10000원)</option>
           <option value={5}>서치(8000원)</option>
-        </select>
+        </StyledSelect>
       </select>
 
       <StyledSeats>
@@ -179,9 +145,9 @@ export default function Movie() {
         </div>
       </StyledSeats>
 
-      <StyledH2>
+      <h2>
         총 {people}명 {result}원
-      </StyledH2>
+      </h2>
       <BackBtn onClick={onBack}>이전 페이지</BackBtn>
       <PurchaseBtn onClick={onClickPurchase}>결제하기</PurchaseBtn>
     </StyledBox>
@@ -192,6 +158,10 @@ const StyledBox = styled.div`
   text-align: center;
 `;
 
+const StyledSelect = styled.div`
+  background-color: aliceblue;
+`;
+
 const StyledP = styled.p`
   padding: 10px 0 0 0;
   font-weight: 900;
@@ -200,11 +170,6 @@ const StyledP = styled.p`
 const StyledH1 = styled.h1`
   margin-top: 50px;
   font-size: 1.5em;
-  color: white;
-`;
-
-const StyledH2 = styled.h2`
-  color: white;
 `;
 
 const StyledScreen = styled.span`

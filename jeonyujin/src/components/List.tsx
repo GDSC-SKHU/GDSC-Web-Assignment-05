@@ -20,7 +20,7 @@ const List = ({ id, title, imgSrc, degree, star, content, recommend }: Props) =>
           {id}. {title}
         </StyledH1>
         {/* 영화 이미지 클릭 시 영화 예매 페이지 이동 */}
-        <Link href="../booking/Movie">
+        <Link href="/booking">
           <StyledImg src={imgSrc} alt={title} />
         </Link>
         <StyledDiv>

@@ -1,7 +1,6 @@
 import type { AppProps } from "next/app";
 import styled from "styled-components";
 import GlobalStyle from "../../styles/GlobalStyle";
-import Main from "./components/Main";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -18,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
 const StyledH1 = styled.h1`
   text-align: center;
   background-color: aliceblue;
-  padding: 20px;
+  padding: 10px;
   margin: 0;
   color: black;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

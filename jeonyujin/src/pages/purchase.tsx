@@ -35,6 +35,7 @@ export default function Purchase() {
 
 const StyledBox = styled.div`
   background-color: #d7faf2;
+  margin-top: 20px;
 `;
 
 const StyledDiv = styled.div`
