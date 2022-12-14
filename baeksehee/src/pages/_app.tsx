@@ -8,14 +8,15 @@ export default function App({ Component, pageProps }: AppProps) {
       <StyledBody>
         <nav>
           <StyledImg src="../megabox.png"></StyledImg>
-          <StyledP>
+
+          <p>
             <Link href="/">
-              <StyledP>영화 </StyledP>
+              <StyledSpan>상영 영화 </StyledSpan>
             </Link>
             <Link href="/booking">
-              <StyledP>예매하기</StyledP>
+              <StyledSpan>예매 하기</StyledSpan>
             </Link>
-          </StyledP>
+          </p>
         </nav>
       </StyledBody>
 
@@ -27,23 +28,19 @@ export default function App({ Component, pageProps }: AppProps) {
 const StyledBody = styled.body`
   margin: 0;
   padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+
   padding-bottom: 50px;
   background-color: #010101;
 `;
 
 const StyledImg = styled.img`
-  width: 1470px;
+  width: 1520px;
   height: 300px;
 
   overflow: hidden;
 `;
 
-const StyledP = styled.p`
-  width: 100px;
-  height: 20px;
-
-  text-decoration-line: none;
+const StyledSpan = styled.span`
+  font-size: 20px;
   color: white;
 `;

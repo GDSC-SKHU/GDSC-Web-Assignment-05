@@ -13,8 +13,16 @@ const movie: IMovie[] = [
     title: "아바타2",
     introduce: "흥행이 예상되는 영화",
   },
-  { poster: "../Endgame.jpg", title: "엔드게임", introduce: "마블" },
-  { poster: "../noWayHome.jpg", title: "노웨이홈", introduce: "스파이더맨" },
+  {
+    poster: "../Endgame.jpg",
+    title: "엔드게임",
+    introduce: "마블",
+  },
+  {
+    poster: "../noWayHome.jpg",
+    title: "노웨이홈",
+    introduce: "스파이더맨",
+  },
   {
     poster: "../TheNightOwl.jpg",
     title: "올빼미",
@@ -31,12 +39,14 @@ function List() {
   return (
     <StyledBody>
       <StyledArticle>
-        <StyledH1>영화관</StyledH1>
+       
 
         {movie.map((each, index) => {
           return (
             <StyledDiv key={index}>
-              <Link href="../booking"><img src={each.poster} alt="포스터사진" /></Link> 
+              <Link href="../booking">
+                <StyledImgWrap><StyledImg src={each.poster} alt="포스터사진" /></StyledImgWrap>
+              </Link>
               <br />
               <br />
               <StyledSpan>제목:{each.title}</StyledSpan>
@@ -67,14 +77,6 @@ const StyledArticle = styled.article`
   gap: 25px;
 `;
 
-const StyledH1 = styled.h1`
-  font-size: 40px;
-  color: white;
-
-  text-align: center;
-
-  margin-left: 25px;
-`;
 
 const StyledDiv = styled.div`
   padding-top: 60px;
@@ -85,6 +87,16 @@ const StyledDiv = styled.div`
 
   background-color: #010101;
   border: solid 1px white;
+`;
+
+const StyledImgWrap = styled.div`
+  width: 220px;
+  height: 282px;
+`
+
+const StyledImg = styled.img`
+  width: 200px;
+  height: 280px;
 `;
 
 const StyledSpan = styled.span`

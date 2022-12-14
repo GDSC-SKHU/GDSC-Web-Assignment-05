@@ -1,27 +1,44 @@
-import { useRouter } from "next/router";
+import { MouseEvent } from "react";
+import Router from "next/router";
 import { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default function Booking() {
   const [number, setNumber] = useState<number>(0);
-  const [price, setPrice] = useState<number>(0);
+  const [price, setPrice] = useState<number>(10000);
   const [result, setResult] = useState<number>(3);
-
-  const router = useRouter();
+  const [name, setName] = useState<string>("아바타 2");
 
   const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setPrice(Number(e.target.value));
+    if (e.target.value == "10000") {
+      setName("아바타 2");
+    } else if (e.target.value == "11000") {
+      setName("엔드게임");
+    } else if (e.target.value == "12000") {
+      setName("노웨이홈");
+    } else if (e.target.value == "13000") {
+      setName("올빼미");
+    } else if (e.target.value == "14000") {
+      setName("트와일라잇");
+    }
+  };
+
+  const onClickSeat = (e: MouseEvent<HTMLButtonElement>) => {
+    const selectColor = e.currentTarget;
+    if (selectColor.style.backgroundColor != "white") {
+      selectColor.style.backgroundColor = "white";
+      setNumber(number + 1);
+    } else {
+      selectColor.style.backgroundColor = "#444451";
+      setNumber(number - 1);
+    }
   };
 
   useEffect(() => {
     const actualNumber = number;
     setResult(price * actualNumber);
   }, [price, number]);
-
-  const onClickSeat = () => {
-    setNumber((prev) => prev + 1);
-    
-  };
 
   const onClickSelected = () => {
     alert("이미 예약된 좌석입니다.");
@@ -39,11 +56,15 @@ export default function Booking() {
       alert("좌석을 선택하지 않으셨습니다.");
       return;
     }
-    router.push("/purchase");
+
+    Router.push({
+      pathname: "/purchase",
+      query: { name: name, number: number, result: result },
+    });
   };
 
   return (
-    <div>
+    <StyledBox>
       <StyledH1>영화 고르기</StyledH1>
       <select value={price} onChange={onSelectChange}>
         <option value={10000}>아바타 2, 10000원</option>
@@ -53,7 +74,12 @@ export default function Booking() {
         <option value={14000}>트와일라잇, 14000원</option>
       </select>
 
-      <StyledH2>좌석 선택하기<br/><br/>스크린</StyledH2>
+      <StyledH2>
+        {name} 좌석 선택하기
+        <br />
+        <br />
+        스크린
+      </StyledH2>
       <div>
         <div></div>
         <StyledDiv>
@@ -116,9 +142,14 @@ export default function Booking() {
 
       <button onClick={onclickReset}>초기화</button>
       <button onClick={onClickPurchase}>결제하기</button>
-    </div>
+    </StyledBox>
   );
 }
+
+const StyledBox = styled.div`
+  padding: 7px;
+`;
+
 const StyledH1 = styled.h1`
   color: white;
 `;
