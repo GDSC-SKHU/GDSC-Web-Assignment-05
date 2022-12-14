@@ -38,8 +38,7 @@ export default function Select() {
 
     // 선택한 인원만큼 가격 증가
     useEffect(() => {
-        const realPerson = person;
-        setTotal(price * realPerson);
+        setTotal(price * person);
     }, [price, person]);
 
     // 좌석 선택 가능하게 하기
@@ -87,7 +86,7 @@ export default function Select() {
             return;
         }
         // 그렇지 않으면(선택을 하면)
-        else router.push({
+        router.push({
             // purchase로 이동하고
             pathname: '/purchase',
             // 해당 값들을 purchase로 넘겨라

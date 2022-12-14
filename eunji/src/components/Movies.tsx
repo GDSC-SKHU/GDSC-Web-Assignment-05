@@ -10,14 +10,19 @@ const Movie = ({ title, imgSrc }: Props) => {
     return (
         <StyledDiv>
             <StyledArticle>
-                <Link href="/booking"><StyledImg src={imgSrc} /></Link>
+                <Link href="/booking"><StyledImg src={imgSrc} alt={`${title} poster`} /></Link>
             </StyledArticle>
-            <Link href="/booking" style={{textDecoration: 'none', color: 'black'}}><StyledH2>{title}</StyledH2></Link>
+            <StyledLink href="/booking"><StyledH2>{title}</StyledH2></StyledLink>
         </StyledDiv>
     );
 };
 
 export default Movie;
+
+const StyledLink = styled(Link)`
+text-decoration: none;
+color: black;
+`;
 
 const StyledDiv = styled.div`
 transition: all 0.4s;
