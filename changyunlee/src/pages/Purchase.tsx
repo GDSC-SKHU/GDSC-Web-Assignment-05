@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { createGlobalStyle } from 'styled-components';
+
 import styled from 'styled-components';
 import React from 'react';
 import Image from 'next/image';
@@ -8,7 +8,6 @@ export default function Purchase() {
   const router = useRouter();
   return (
     <>
-      <GlobalStyle />
       <StyledLogo>
         <Image src='/logo.png' alt='some' width={465} height={70} />
       </StyledLogo>
@@ -26,25 +25,12 @@ export default function Purchase() {
     </>
   );
 }
-const GlobalStyle = createGlobalStyle`
-  body{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-    background-color: #fff8ee;
-    display: flex;
-    justify-content: center;
-  }
-  span{
-    padding: 20px;
-  }
-`;
+
 const StyledLogo = styled.p`
   margin-top: 10px;
 `;
 const Box = styled.div`
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-
   margin-top: 50px;
   display: flex;
   flex-direction: column;

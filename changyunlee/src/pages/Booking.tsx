@@ -1,4 +1,3 @@
-import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -194,7 +193,6 @@ export default function Booking() {
   };
   return (
     <>
-      <GlobalStyle />
       <StyledLogo>
         <Image src='/logo.png' alt='some' width={465} height={70} />
       </StyledLogo>
@@ -231,20 +229,6 @@ export default function Booking() {
     </>
   );
 }
-const GlobalStyle = createGlobalStyle`
-  body{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-    background-color: #fff8ee;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .seat {
-    background-color:red;
-  }
-`;
 const StyledSelect = styled.select`
   margin: auto;
   display: flex;
@@ -277,6 +261,9 @@ const StyledDivSeat = styled.div`
   height: 20px;
   background-color: #adadad;
   border-radius: 30%;
+  &.seat {
+    background-color: red;
+  }
 `;
 const StyledStage = styled.div`
   margin: auto;

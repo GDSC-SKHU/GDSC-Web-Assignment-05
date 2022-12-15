@@ -1,4 +1,3 @@
-import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
 import React from 'react';
 import Movie from '../components/Movie';
@@ -9,7 +8,6 @@ export default function Home() {
   return (
     <>
       <>
-        <GlobalStyle />
         <StyledLogo>
           <Image src='/logo.png' alt='some' width={465} height={70} />
         </StyledLogo>
@@ -23,16 +21,6 @@ export default function Home() {
   );
 }
 
-const GlobalStyle = createGlobalStyle`
-  body{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-    background-color: #fff8ee;
-    display: flex;
-    justify-content: center;
-  }
-`;
 const StyledLogo = styled.p`
   margin-top: 10px;
 `;
